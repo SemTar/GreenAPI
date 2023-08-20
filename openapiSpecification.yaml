@@ -1,0 +1,60 @@
+openapi: 3.0.3
+info:
+  title: Test project GreenAPI
+  description: |-
+    This is a sample project 
+  version: 1.0.0
+externalDocs:
+  description: Find out more about Swagger
+  url: http://swagger.io
+servers:
+  - url: http://localhost:3000/
+
+tags:
+  - name: Main
+
+paths:
+  /:
+    post:
+      tags:
+        - Main
+      summary: this route calculates the amount
+      description: send two number in query parameters p1 and p2 and you get amount
+      parameters:
+        - in: query
+          name: p1
+          required: true
+          schema:
+            type: number
+            example: 7
+        - in: query
+          name: p2
+          required: true
+          schema:
+            type: number
+            example: 1
+      responses:
+        '200':
+          description: successful send
+          content:
+            application/json:
+              schema:
+                type: number
+                example: 8
+        '400':
+          description: validation error
+          content:
+            application/json:
+              schema:
+                type: string
+                example: p1 and p2 must be a numbers
+        '500':
+          description: server error
+          content:
+            application/json:
+              schema:
+                type: string
+                example: Internal Server Error
+ 
+            
+          
